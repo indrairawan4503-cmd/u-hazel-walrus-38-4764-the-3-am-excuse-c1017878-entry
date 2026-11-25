@@ -63,8 +63,8 @@ LINE = (
 )
 
 
-def main():
-    data = LINE.encode("utf-8")
+def write_output(data):
+    """Write the entry bytes to /output first, then the repo-root copy."""
     # Write /output FIRST: the grader reads this copy.
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "wb") as f:
@@ -76,6 +76,10 @@ def main():
             f.write(data)
     except OSError:
         pass
+
+
+def main():
+    write_output(LINE.encode("utf-8"))
 
 
 if __name__ == "__main__":
